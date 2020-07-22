@@ -12,6 +12,7 @@ from appmgr import updater
 dispatcher=updater.dispatcher
 dispatcher.add_handler(CommandHandler('start',start))
 dispatcher.add_handler(MessageHandler(Filters.text & Filters.user(config.userid) &(~Filters.command),tg2q.text))
+dispatcher.add_handler(MessageHandler(Filters.photo & Filters.user(config.userid),tg2q.photo))
 
 @app.receiver("FriendMessage")
 async def event_gm(friend: Friend, message: FriendMessage):
